@@ -12,9 +12,11 @@ import {
 import React, {useState} from 'react';
 import Modal from 'react-native-modal';
 import {TextInput} from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
 const {height, width} = Dimensions.get('screen');
 export default function Header() {
+  const navigation = useNavigation();
   const [visible, setVisble] = useState(false);
   const [modalopen, setModalOpen] = useState(false);
 
@@ -109,9 +111,9 @@ export default function Header() {
         </View>
       </Modal>
 
-      {/*...................End upper search header on click search Bar Modal............. */}
+{/*...................End upper search header on click search Bar Modal............. */}
 
-      {/*...................Start Inner search header on click search Bar Modal............. */}
+{/*...................Start Inner search header on click search Bar Modal............. */}
 
       <TouchableOpacity onPress={() => setModalOpen(!modalopen)}>
         <Image
@@ -136,7 +138,9 @@ export default function Header() {
         onRequestClose={() => {
           setVisble(!visible);
         }}
-        onBackdropPress={() => setVisble(!visible)}>
+       onBackdropPress={() => setVisble(!visible)}
+        
+        >
         <View style={styles.modalCon}>
           <TouchableOpacity>
             <Text>{'New group'}</Text>
@@ -153,13 +157,16 @@ export default function Header() {
           <TouchableOpacity>
             <Text>{'Payments'}</Text>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>{
+            setVisble(!visible)
+            navigation.navigate('Settings')}}>
             <Text>{'Settings'}</Text>
           </TouchableOpacity>
         </View>
       </Modal>
 
-      {/*...................End Inner search header on click search Bar Modal............. */}
+{/*...................End Inner search header on click search Bar Modal............. */}
+    
     </View>
   );
 }
@@ -169,25 +176,25 @@ const styles = StyleSheet.create({
     backgroundColor: '#075E54',
     flexDirection: 'row',
     paddingTop: 50,
-    height: '10.5%',
+  //  height: '10.5%',
   },
   whatsAppTxt: {
     color: 'white',
     fontSize: 20,
     fontWeight: '600',
-    // marginTop:10,
+    
     marginLeft: 28,
   },
   headerIcon: {
     height: 25,
     width: 25,
-    //position:'absolute',
+   
     left: 177,
   },
   headerIconSecond: {
     height: 25,
     width: 25,
-    //position:'absolute',
+   
     left: 195,
   },
   modalCon: {

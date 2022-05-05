@@ -8,7 +8,6 @@ import Calls from './CallScreen';
 import Status from './StatusScreen';
 import Header from './WhatsAppheader';
 
-// import Header from './WhatsAppheader';
 
 
 function Camera() {

@@ -12,10 +12,10 @@ export default function Chats({navigation}) {
   const renderItem = ({item}) => {
     return (
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('MessageScreen',{name:item.name, img:item.profilePic})}>
           <View style={styles.itemCon}>
             <View style={styles.imgCon}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('Profile',{name:item.name,img:item.profilePic})}>
                 <Image
                   resizeMode="cover"
                   resizeMethod="resize"
@@ -24,14 +24,14 @@ export default function Chats({navigation}) {
                 />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity activeOpacity={0.7} style={styles.rightCon} >
+            <View style={styles.rightCon} >
               <View style={{flexDirection: 'row', width: 320}}>
                 <Text style={styles.textStyle}>{item.name}</Text>
 
                 <Text style={styles.textStyle3}>{item.lastSeen}</Text>
               </View>
               <Text style={styles.textStyle2}>{item.lastmsg}</Text>
-            </TouchableOpacity>
+            </View>
           </View>
         </TouchableOpacity>
       </View>

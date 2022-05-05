@@ -16,10 +16,18 @@ import Contacts from './components/ContactlistData';
 import Chats from './components/ChatScreen';
 import ContactHeader from './components/ContactlistHeader';
 import SplashScreen from './components/SplashScreen';
+import ProfileScreen from './components/ProfileScreen';
+import MessageScreen from './components/MessageScreen';
+import Settings from './components/Settings';
+
 
 
 
 const Stack = createNativeStackNavigator();
+
+
+
+
 
 export default function App() {
   return (
@@ -30,7 +38,11 @@ export default function App() {
         <Stack.Screen name="My Tabs" component={MyTabs} />
         <Stack.Screen name="Contacts" component={Contacts} />
         <Stack.Screen name="Chats" component={Chats} />
+        <Stack.Screen name="Header" component={Header} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="MessageScreen" component={MessageScreen} />
         <Stack.Screen name="ContactHeader" component={ContactHeader} />
+        <Stack.Screen name="Settings" component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );

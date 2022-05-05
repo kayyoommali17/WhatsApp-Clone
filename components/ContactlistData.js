@@ -13,7 +13,7 @@ import { details } from './ContactRawDataList';
 
 import ContactHeader from './ContactlistHeader';
 
-export default function Contacts({navigation}) {
+export default function Contacts() {
 
   const renderItem = ({item}) => {
     return (

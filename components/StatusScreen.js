@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {
   Text,
   View,
@@ -6,16 +6,22 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Button,
+  TextInput,
 } from 'react-native';
-
-import Contacts from './ContactlistData';
+import Modal from 'react-native-modal';
 
 export default function Status() {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
   return (
     <View style={{flex: 1}}>
       <ScrollView>
         <View style={styles.mainCon}>
-          <TouchableOpacity style={{flexDirection:'row'}}> 
+          <TouchableOpacity style={{flexDirection: 'row'}}>
             <Image
               style={styles.ImgCon}
               source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/status.png')}
@@ -29,35 +35,35 @@ export default function Status() {
 
         <View>
           <View style={styles.mainCon}>
-          <TouchableOpacity style={{flexDirection:'row'}}> 
-            <Image
-              style={styles.ImgCon}
-              source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/status.png')}
-            />
-            <Text style={styles.txtStyle1}>{'Satyam Appinventiv'}</Text>
-            <Text style={styles.txtStyle2}>{'Tap to add status update'}</Text>
+            <TouchableOpacity style={{flexDirection: 'row'}}>
+              <Image
+                style={styles.ImgCon}
+                source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/status.png')}
+              />
+              <Text style={styles.txtStyle1}>{'Satyam Appinventiv'}</Text>
+              <Text style={styles.txtStyle2}>{'Tap to add status update'}</Text>
             </TouchableOpacity>
           </View>
 
           <View style={styles.mainCon}>
-          <TouchableOpacity style={{flexDirection:'row'}}> 
-            <Image
-              style={styles.ImgCon}
-              source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/status.png')}
-            />
-            <Text style={styles.txtStyle1}>{'Puspha Appinventiv'}</Text>
-            <Text style={styles.txtStyle2}>{'Tap to add status update'}</Text>
+            <TouchableOpacity style={{flexDirection: 'row'}}>
+              <Image
+                style={styles.ImgCon}
+                source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/status.png')}
+              />
+              <Text style={styles.txtStyle1}>{'Puspha Appinventiv'}</Text>
+              <Text style={styles.txtStyle2}>{'Tap to add status update'}</Text>
             </TouchableOpacity>
           </View>
 
           <View style={styles.mainCon}>
-          <TouchableOpacity style={{flexDirection:'row'}}> 
-            <Image
-              style={styles.ImgCon}
-              source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/status.png')}
-            />
-            <Text style={styles.txtStyle1}>{'Masroor Ali'}</Text>
-            <Text style={styles.txtStyle2}>{'Tap to add status update'}</Text>
+            <TouchableOpacity style={{flexDirection: 'row'}}>
+              <Image
+                style={styles.ImgCon}
+                source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/status.png')}
+              />
+              <Text style={styles.txtStyle1}>{'Masroor Ali'}</Text>
+              <Text style={styles.txtStyle2}>{'Tap to add status update'}</Text>
             </TouchableOpacity>
           </View>
 
@@ -66,19 +72,40 @@ export default function Status() {
       </ScrollView>
 
       <View style={styles.bottomIcon}>
-        <TouchableOpacity style={{padding:6}}>
+        <TouchableOpacity onPress={toggleModal} style={{padding: 13}}>
           <Image
-            style={styles.bottomImg}
+            style={{height: 30, width: 30}}
             source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/pencil.png')}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{padding:6}}>
+        <TouchableOpacity style={{padding: 6}}>
           <Image
-          style={styles.bottomImg}
+            style={styles.bottomImg}
             source={require('/Users/appinventiv/Desktop/WhatsApp/assets/images/PhotoCam.png')}
           />
         </TouchableOpacity>
       </View>
+
+      {/*...............................Modal Start Here ....................*/}
+
+      <Modal isVisible={isModalVisible} deviceWidth={1}>
+        
+        <View style={styles.ModalStyl}>
+
+          <View>
+            <TextInput
+              placeholder="Type a Status"
+              autoFocus={true}
+              style={{fontSize: 40}}
+            />
+          </View>
+        
+
+          <Button title="Go Back" onPress={toggleModal} />
+        </View>
+      </Modal>
+
+      {/*.................................Modal End  Here..............................*/}
     </View>
   );
 }
@@ -113,9 +140,27 @@ const styles = StyleSheet.create({
     right: 20,
     bottom: 70,
   },
-  bottomImg:{
-    height: 50,
-     width: 50
-
-  }
+  bottomImg: {
+    height: 40,
+    width: 40,
+  },
+  ModalStyl: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  StatusIcon: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '30%',
+  position:'absolute',
+  left:15,
+  marginTop:30
+  },
+  StatusImgStyl: {
+    height: 30,
+    width: 30,
+    
+  },
 });

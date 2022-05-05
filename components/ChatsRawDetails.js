@@ -5,6 +5,7 @@ export const details = [
     lastmsg: 'hello...',
     profilePic: 'https://reqres.in/img/faces/1-image.jpg',
     date: '',
+    lastSeen: '9:48 AM',
     call:require('../assets/images/Movie.png')
     
   },
