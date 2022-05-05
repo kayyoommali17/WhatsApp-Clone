@@ -2,23 +2,16 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker';
 
-const img = () => {
+export default function App() {
+    const devices = useCameraDevices('wide-angle-camera')
+    const device = devices.back
+  
+    if (device == null) return <LoadingView />
     return (
-        <View style ={{marginTop:100}}>
-            <Text onPress={()=>{
-                ImagePicker.openPicker({
-                    width: 300,
-                    height: 400,
-                    cropping: true
-                  }).then(image => {
-                    console.log(image);
-                  }).catch((err) =>console.log("Err", err))
-            }}>img</Text>
-            
-        </View>
+      <Camera
+        style={StyleSheet.absoluteFill}
+        device={device}
+        isActive={true}
+      />
     )
-}
-
-export default img
-
-const styles = StyleSheet.create({})
+    }  

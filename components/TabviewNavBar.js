@@ -7,16 +7,8 @@ import Chats from './ChatScreen';
 import Calls from './CallScreen';
 import Status from './StatusScreen';
 import Header from './WhatsAppheader';
+import CameraScreen from './CameraScreen';
 
-
-
-function Camera() {
-  return (
-    <View>
-      <Text>{'camera...'}</Text>
-    </View>
-  );
-}
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -40,10 +32,11 @@ export default function MyTabs() {
       
       <Tab.Screen
         name="Camera"
-        component={Camera}
+        component={CameraScreen}
         options={{
           tabBarLabel: () => null,
           tabBarIcon: () => (
+            
             <Image
               source={require('/Users/appinventiv/Desktop/WhatsApp/assets/fonts/PhotoCam.png')}
               style={{width: 25, height: 25,resizeMode:'cover'}}
